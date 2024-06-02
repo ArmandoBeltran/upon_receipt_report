@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<odoo>
+
+    <template id="upon_receipt_header">
+        <div class="header">
+            <div class="row" style="color: #1C4D83;">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-4">
+                            <img t-att-src="image_data_uri(o.company_id.logo)" style="width: 130px;"/>
+                        </div>
+                        <div class="col-4">
+                            <span style="font-size: 13px;">CONTRA-RECIBO</span>
+                        </div>
+                        <div class="col-4" style="font-size: 15px; font-style: bold;">
+                            <span t-field="o.name"/><br/>
+                            <span t-esc="o.create_date.strftime('%Y-%m-%d') if o.create_date else ''"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-4">
+                            <img t-att-src="image_data_uri(o.company_id.logo)" style="width: 130px;"/>
+                        </div>
+                        <div class="col-4">
+                            <span style="font-size: 13px;">CONTRA-RECIBO</span>
+                        </div>
+                        <div class="col-4" style="font-size: 15px;">
+                            <span t-field="o.name"/><br/>
+                            <span t-esc="o.create_date.strftime('%Y-%m-%d') if o.create_date else ''"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="report_upon_receipt_document">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="upon_receipt.upon_receipt_header"/>
+                <div class="page">
+                    <div class="oe_structure" />
+                    <div class="row" style="color: #1C4D83;">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-6" style="font-size: 15px;">
+                                    <span>RECIBIMOS DE: </span><br/>
+                                    <span t-field="o.partner_id"/>
+                                </div>
+                                <div class="col-6">
+                                    <span style="font-size: 15px;">ORIGINAL</span>
+                                </div>
+                            </div>
+                            <br></br>
+                            <table class="table table-sm" style="width: 390px; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background-color: #8BABCF; border: 2px solid #1C4D83; color: #1C4D83;">
+                                        <th>DOCUMENTO</th>
+                                        <th>FECHA</th>
+                                        <th>FECHA DE VENC.</th>
+                                        <th>IMPORTE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="color: #1C4D83;">
+                                        <td><span t-field="o.origin"/></td>
+                                        <td><span t-esc="o.create_date.strftime('%Y-%m-%d') if o.create_date else ''"/></td>
+                                        <td><span t-esc="o.date_order.strftime('%Y-%m-%d') if o.date_order else ''"/></td>
+                                        <td><span t-field="o.amount_total"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <h6>REVISION VS ENTREGA DE MERCANCIA</h6>
+                            <h6>PAGO <span t-field="o.payment_deadline" style="margin-left: 20px;"/></h6>
+                            <br></br>
+                            <h6 class="text-center">FIRMA <br></br><br></br>________________________________________</h6>
+                            <br></br>
+                            <br></br>
+                            <h6>Domicilio</h6>
+                            <span t-field="o.company_id.street"/>
+                            <span t-field="o.company_id.street2" t-if="o.company_id.street2"/>
+                            <span t-field="o.company_id.zip"/>
+                            <span t-field="o.company_id.city"/> 
+                            <span t-field="o.company_id.state_id.name" t-if="o.company_id.state_id"/>,
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-6" style="font-size: 15px;">
+                                    <span>RECIBIMOS DE: </span><br/>
+                                    <span t-field="o.partner_id"/>
+                                </div>
+                                <div class="col-6">
+                                    <span style="font-size: 15px;">COPIA</span>
+                                </div>
+                            </div>
+                            <br></br>
+                            <table class="table table-sm" style="width: 390; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background-color: #8BABCF; border: 2px solid #1C4D83; color: #1C4D83;">
+                                        <th>DOCUMENTO</th>
+                                        <th>FECHA</th>
+                                        <th>FECHA DE VENC.</th>
+                                        <th>IMPORTE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span t-field="o.origin"/></td>
+                                        <td><span t-esc="o.create_date.strftime('%Y-%m-%d') if o.create_date else ''"/></td>
+                                        <td><span t-esc="o.date_order.strftime('%Y-%m-%d') if o.date_order else ''"/></td>
+                                        <td><span t-field="o.amount_total"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <h6>REVISION VS ENTREGA DE MERCANCIA</h6>
+                            <h6>PAGO <span t-field="o.payment_deadline" style="margin-left: 20px;"/></h6>
+                            <br></br>
+                            <h6 class="text-center">FIRMA <br></br><br></br>________________________________________</h6>
+                            <br></br>
+                            <br></br>
+                            <h6>Domicilio</h6>
+                            <span t-field="o.company_id.street"/>
+                            <span t-field="o.company_id.street2" t-if="o.company_id.street2"/>
+                            <span t-field="o.company_id.zip"/>
+                            <span t-field="o.company_id.city"/> 
+                            <span t-field="o.company_id.state_id.name" t-if="o.company_id.state_id"/>,
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>   
+    
+    <report
+        id="action_report_upon_receipt"
+        model="purchase.order"
+        string="Contra-Recibo"
+        report_type="qweb-pdf"
+        name="upon_receipt.report_upon_receipt_document"
+        file="upon_receipt.report_upon_receipt_document"
+    />
+</odoo>
