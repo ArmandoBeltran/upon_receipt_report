@@ -12,8 +12,6 @@
         'purchase'
     ], 
     'data' : [
-        'views/purchase_order.xml',
-        
         'report/upon_receipt_template_report.xml',
     ]
 }

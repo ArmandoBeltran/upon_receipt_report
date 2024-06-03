@@ -41,7 +41,7 @@
     <template id="report_upon_receipt_document">
         <t t-call="web.basic_layout">
             <t t-foreach="docs" t-as="o">
-                <t t-call="upon_receipt.upon_receipt_header"/>
+                <t t-call="upon_receipt_report.upon_receipt_header"/>
                 <div class="page">
                     <div class="oe_structure" />
                     <div class="row" style="color: #1C4D83;">
@@ -78,7 +78,6 @@
                             <br></br>
                             <br></br>
                             <h6>REVISION VS ENTREGA DE MERCANCIA</h6>
-                            <h6>PAGO <span t-field="o.payment_deadline" style="margin-left: 20px;"/></h6>
                             <br></br>
                             <h6 class="text-center">FIRMA <br></br><br></br>________________________________________</h6>
                             <br></br>
@@ -123,7 +122,6 @@
                             <br></br>
                             <br></br>
                             <h6>REVISION VS ENTREGA DE MERCANCIA</h6>
-                            <h6>PAGO <span t-field="o.payment_deadline" style="margin-left: 20px;"/></h6>
                             <br></br>
                             <h6 class="text-center">FIRMA <br></br><br></br>________________________________________</h6>
                             <br></br>
@@ -146,7 +144,7 @@
         model="purchase.order"
         string="Contra-Recibo"
         report_type="qweb-pdf"
-        name="upon_receipt.report_upon_receipt_document"
-        file="upon_receipt.report_upon_receipt_document"
+        name="upon_receipt_report.report_upon_receipt_document"
+        file="upon_receipt_report.report_upon_receipt_document"
     />
 </odoo>
