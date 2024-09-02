@@ -12,7 +12,7 @@
                             <img t-att-src="image_data_uri(o.company_id.logo)" style="width: 130px;"/>
                         </div>
                         <div class="col-4">
-                            <span style="font-size: 13px;">CONTRA-RECIBO</span>
+                            <span style="font-size: 13px;">Testing</span>
                         </div>
                         <div class="col-4" style="font-size: 15px; font-style: bold;">
                             <span t-field="o.name"/><br/>
